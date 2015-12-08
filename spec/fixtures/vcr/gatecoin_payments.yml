@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://staging.gatecoin.com/api/Merchant/Payment
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Api-Public-Key:
+      - YQqrQFHk6UcLYCkz4HTmaJTMKH0VWgCA
+      Api-Request-Date:
+      - '1448457262.655'
+      Api-Request-Signature:
+      - T30I7YWj9t8uT2oKbyf37ogejxTbDlqhlp3s+XTFJRI=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Wed, 25 Nov 2015 13:14:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dd413c9da0cd112fb602560173fdd4a791448457264; expires=Thu, 24-Nov-16
+        13:14:24 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS, HEAD
+      Access-Control-Allow-Headers:
+      - Content-Type,API_PUBLIC_KEY,API_REQUEST_SIGNATURE,API_REQUEST_DATE
+      X-Powered-By:
+      - ''
+      - ''
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Ray:
+      - 24ad9dce49ea3689-MAN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"payments":[{"txID":"f3bc9bc5-4eb2-4083-8309-f8cfd7d95916","amount":0.00895413,"amountReceived":0.00000000,"status":"New","confirmation":0,"createDate":"1448457033","expiryDate":"1448458833","reference":"hashed_order_id_1"},{"txID":"f6ca47c4-db81-478a-bd69-187409511d51","amount":0.00358165,"amountReceived":0.00000000,"status":"Expired","confirmation":0,"createDate":"1448455916","expiryDate":"1448455976","reference":"hashed_order_id_1"},{"txID":"2c168a1b-9364-46d1-a28a-efa66c6f0ad8","amount":0.00358165,"amountReceived":0.00000000,"status":"Expired","confirmation":0,"createDate":"1447295477","expiryDate":"1447295537"}],"responseStatus":{"message":"OK"}}'
+    http_version: 
+  recorded_at: Wed, 25 Nov 2015 13:14:23 GMT
+recorded_with: VCR 2.9.3
