@@ -1,4 +1,5 @@
 require 'gatecoin-api/version'
+require 'gatecoin-api/constants'
 require 'gatecoin-api/client'
 
 module GatecoinAPI

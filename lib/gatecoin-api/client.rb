@@ -11,10 +11,11 @@ module GatecoinAPI
 
     class ApiError < StandardError
 
-      attr_reader :raw
+      attr_reader :raw, :errors
 
       def initialize(message, code, raw)
-        @raw = raw
+        @raw    = raw
+        @errors = @raw['errors']
         super "#{message} [#{code}]"
       end
     end
@@ -59,49 +60,115 @@ module GatecoinAPI
       [client, result]
     end
 
-    def post_document_id(number:, country:, content:, mime_type: 'image/jpeg')
+    def update_personal_information(given_name:, family_name:, birthday:, nationality:)
       params = {
-        DocumentNumber: number,
-        IssuingCountry: country,
-        Content:        Base64.strict_encode64(content),
-        MimeType:       mime_type,
+        GivenName:   given_name,
+        FamilyName:  family_name,
+        Birthday:    birthday,
+        Nationality: nationality,
       }
 
-      response = connection(sign: true).post('/api/Account/DocumentID') do |req|
+      response = connection(sign: true).put('/api/Account/PersonalInformation') do |req|
         req.body = MultiJson.dump(params)
       end
 
       parse_response(response)
     end
 
-    def post_document_address(content:, mime_type: 'image/jpeg')
-      params = {
-        Content:  Base64.strict_encode64(content),
-        MimeType: mime_type,
-      }
+    def personal_information
+      response = connection(sign: true).get('/api/Account/PersonalInformation')
 
-      response = connection(sign: true).post('/api/Account/DocumentAddress') do |req|
+      parse_response(response)
+    end
+
+    def update_resident_information(address:, city:, state:, zip:, home_phone: nil, mobile_phone: nil, country_code: nil)
+      params               = {
+        Line1: address,
+        City:  city,
+        State: state,
+        ZIP:   zip,
+      }
+      params[:HomePhone]   = home_phone if home_phone
+      params[:MobilePhone] = mobile_phone if mobile_phone
+      params[:CountryCode] = country_code if country_code
+
+      response = connection(sign: true).put('/api/Account/ResidentInformation') do |req|
         req.body = MultiJson.dump(params)
       end
 
       parse_response(response)
     end
 
-    def documents_status
-      result = {}
+    def resident_information
+      response = connection(sign: true).get('/api/Account/ResidentInformation')
 
-      response             = connection(sign: true).get('/api/Account/DocumentID')
-      parsed               = parse_response(response)
-      result['DocumentID'] = parsed['status']
-
-      response                  = connection(sign: true).get('/api/Account/DocumentAddress')
-      parsed                    = parse_response(response)
-      result['DocumentAddress'] = parsed['status']
-
-      result
+      parse_response(response)
     end
 
-    # fails unless documents are verified
+    def update_document_information(id_number:, id_issuing_country:, id_content:, address_proof_content:, id_mime_type: 'image/jpeg', address_proof_mime_type: 'image/jpeg')
+      params = {
+        IDDocumentNumber: id_number,
+        IDIssuingCountry: id_issuing_country,
+        IDMimeType:       id_mime_type,
+        IDContent:        Base64.strict_encode64(id_content),
+        ProofMimeType:    address_proof_mime_type,
+        ProofContent:     Base64.strict_encode64(address_proof_content),
+      }
+
+      response = connection(sign: true).put('/api/Account/DocumentInformation') do |req|
+        req.body = MultiJson.dump(params)
+      end
+
+      parse_response(response)
+    end
+
+    def document_information
+      response = connection(sign: true).get('/api/Account/DocumentInformation')
+
+      parse_response(response)
+    end
+
+    def fill_questionnaire(answers)
+      params = answers.each_with_object({}) do |(k, v), hash|
+        number = k.to_i
+        next if number <= 0
+        hash[:"Answer#{k.to_s.rjust(3, '0')}"] = v
+      end
+
+      response = connection(sign: true).post('/api/Account/Questionnaire') do |req|
+        req.body = MultiJson.dump(params)
+      end
+
+      parse_response(response)
+    end
+
+    def questionnaire
+      response = connection(sign: true).get('/api/Account/Questionnaire')
+
+      parse_response(response)
+    end
+
+    # def request_verification(level: 4)
+    #   params = {
+    #     Level: level,
+    #   }
+    #
+    #   response = connection(sign: true).post('/api/Account/Level') do |req|
+    #     req.body = MultiJson.dump(params)
+    #   end
+    #
+    #   parse_response(response)
+    # end
+
+    def verification_level
+      response = connection(sign: true).get('/api/Account/Level')
+      result   = parse_response(response)
+      level    = result['level']
+
+      {level: level, description: VERIFICATION_LEVELS[level], response: result}
+    end
+
+    # fails if verification level < 4
     def link_bank_account(bank_name:, label:, account_number:, currency:, holder_name:, city:, country_code:, password:,
                           swift_code: nil, bank_code: nil, branch_name: nil, bank_address: nil, bank_phone: nil, validation_code: nil)
       params                  = {

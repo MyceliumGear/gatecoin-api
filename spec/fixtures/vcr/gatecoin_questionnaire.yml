@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.gatecoin.com/api/Auth/Login
+    body:
+      encoding: UTF-8
+      string: '{"UserName":"alerticus+gatecoin.test@gmail.com","Password":"123123123"}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Api-Public-Key:
+      - Bc8X6lIxZdPnYJNfatPpLiX1oDwxNOvt
+      Api-Request-Date:
+      - '1450275251.882'
+      Api-Request-Signature:
+      - iIqI0GWv4sjpZSbEbpRmNMawFyUNE4ehJ6i8E/o0yQM=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Wed, 16 Dec 2015 14:14:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d5df6e3aec939ac794c73450b463ef7611450275254; expires=Thu, 15-Dec-16
+        14:14:14 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS, HEAD
+      Access-Control-Allow-Headers:
+      - Content-Type,API_PUBLIC_KEY,API_REQUEST_SIGNATURE,API_REQUEST_DATE
+      X-Powered-By:
+      - ''
+      - ''
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Ray:
+      - 255afe570f803653-MAN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"isSuccess":true,"apiKey":"8E9F78DDC7D9FC58B3988DB28B2D1061","publicKey":"A3AE1Bs8NeISQSA8lZgmLEZQ4joeNtfX","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1450275257","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
+    http_version: 
+  recorded_at: Wed, 16 Dec 2015 14:14:13 GMT
+- request:
+    method: get
+    uri: https://staging.gatecoin.com/api/Account/Questionnaire
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Api-Public-Key:
+      - A3AE1Bs8NeISQSA8lZgmLEZQ4joeNtfX
+      Api-Request-Date:
+      - '1450275253.773'
+      Api-Request-Signature:
+      - IGr8CNk7PuzSLvb60faljuVW9v3Lp9wLTWCpa+C5a48=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Wed, 16 Dec 2015 14:14:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6569439fa3b80860b6746a798c6d2a021450275256; expires=Thu, 15-Dec-16
+        14:14:16 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS, HEAD
+      Access-Control-Allow-Headers:
+      - Content-Type,API_PUBLIC_KEY,API_REQUEST_SIGNATURE,API_REQUEST_DATE
+      X-Powered-By:
+      - ''
+      - ''
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Ray:
+      - 255afe62e7b43647-MAN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"questionnaireStatus":"Present","responseStatus":{"message":"OK"}}'
+    http_version: 
+  recorded_at: Wed, 16 Dec 2015 14:14:14 GMT
+recorded_with: VCR 2.9.3

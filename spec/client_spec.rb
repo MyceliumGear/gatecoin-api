@@ -93,36 +93,107 @@ RSpec.describe GatecoinAPI::Client do
 
       context "short-term API key" do
 
-        it "uploads DocumentID" do
+        it "updates personal information" do
           details = {
-            number:  '007',
-            country: 'AT',
-            content: File.read(File.expand_path('../fixtures/multipass.jpg', __FILE__)),
+            given_name:  'GivenName',
+            family_name: 'FamilyName',
+            birthday:    Date.parse('1991-05-21').to_time.to_i,
+            nationality: 'AL',
           }
-          VCR.use_cassette 'gatecoin_post_document_id' do
+          VCR.use_cassette 'gatecoin_update_personal_information' do
             @new_client, = @client.login(**LOGIN)
-            @result      = @new_client.post_document_id(**details)
+            @result      = @new_client.update_personal_information(**details)
           end
           expect(@result).to eq("responseStatus" => {"message" => "OK"})
         end
 
-        it "uploads DocumentAddress" do
-          details = {
-            content: File.read(File.expand_path('../fixtures/multipass.jpg', __FILE__)),
-          }
-          VCR.use_cassette 'gatecoin_post_document_address' do
+        it "gets personal information" do
+          VCR.use_cassette 'gatecoin_personal_information' do
             @new_client, = @client.login(**LOGIN)
-            @result      = @new_client.post_document_address(**details)
+            @result      = @new_client.personal_information
+          end
+          expect(@result).to eq("personalInfo" => {"givenName" => "GivenName", "familyName" => "FamilyName", "nationality" => "AL"}, "responseStatus" => {"message" => "OK"})
+        end
+
+        it "updates resident information" do
+          details = {
+            address: 'Earth',
+            city:    'Uryupinsk',
+            state:   'Immutable',
+            zip:     '000000',
+          }
+          VCR.use_cassette 'gatecoin_update_resident_information' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.update_resident_information(**details)
           end
           expect(@result).to eq("responseStatus" => {"message" => "OK"})
         end
 
-        it "gets documents status" do
-          VCR.use_cassette 'gatecoin_documents_status' do
+        it "gets resident information" do
+          VCR.use_cassette 'gatecoin_resident_information' do
             @new_client, = @client.login(**LOGIN)
-            @result      = @new_client.documents_status
+            @result      = @new_client.resident_information
           end
-          expect(@result).to eq("DocumentID" => "Present", "DocumentAddress" => "Present")
+          expect(@result).to eq("residentInfo" => {"line1" => "Earth", "city" => "Uryupinsk", "state" => "Immutable", "zip" => "000000", "countryCode" => ""}, "responseStatus" => {"message" => "OK"})
+        end
+
+        it "updates document information" do
+          details = {
+            id_number:             '007',
+            id_issuing_country:    'AL',
+            id_content:            File.read(File.expand_path('../fixtures/multipass.jpg', __FILE__)),
+            address_proof_content: File.read(File.expand_path('../fixtures/multipass.jpg', __FILE__)),
+          }
+          VCR.use_cassette 'gatecoin_update_document_information' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.update_document_information(**details)
+          end
+          expect(@result).to eq("responseStatus" => {"message" => "OK"})
+        end
+
+        it "gets document information" do
+          VCR.use_cassette 'gatecoin_document_information' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.document_information
+          end
+          expect(@result).to eq("idStatus" => "Present", "proofStatus" => "Present", "responseStatus" => {"message" => "OK"})
+        end
+
+        it "fills questionnaire" do
+          details = {
+            1  => true,
+            11 => '<1000',
+            14 => 'Gift from Santa',
+          }
+          VCR.use_cassette 'gatecoin_fill_questionnaire' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.fill_questionnaire(details)
+          end
+          expect(@result).to eq("responseStatus" => {"message" => "OK"})
+        end
+
+        it "gets questionnaire" do
+          VCR.use_cassette 'gatecoin_questionnaire' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.questionnaire
+          end
+          expect(@result).to eq("questionnaireStatus" => "Present", "responseStatus" => {"message" => "OK"})
+        end
+
+        xit "requests verification" do
+          VCR.use_cassette 'gatecoin_request_verification' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.request_verification
+          end
+          expect(@result).to eq("responseStatus" => {"message" => "OK"})
+        end
+
+        it "gets verification level" do
+          VCR.use_cassette 'gatecoin_verification_level' do
+            @new_client, = @client.login(**LOGIN)
+            @result      = @new_client.verification_level
+          end
+          expect(@result).to eq(level: 1, description: "Mail verified.", response: {"level" => 1, "responseStatus" => {"message" => "OK"}})
         end
       end
 
