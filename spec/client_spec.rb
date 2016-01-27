@@ -112,7 +112,7 @@ RSpec.describe GatecoinAPI::Client do
             @new_client, = @client.login(**LOGIN)
             @result      = @new_client.personal_information
           end
-          expect(@result).to eq("personalInfo" => {"givenName" => "GivenName", "familyName" => "FamilyName", "nationality" => "AL"}, "responseStatus" => {"message" => "OK"})
+          expect(@result).to eq(given_name: "GivenName", family_name: "FamilyName", nationality: "AL")
         end
 
         it "updates resident information" do
@@ -134,7 +134,7 @@ RSpec.describe GatecoinAPI::Client do
             @new_client, = @client.login(**LOGIN)
             @result      = @new_client.resident_information
           end
-          expect(@result).to eq("residentInfo" => {"line1" => "Earth", "city" => "Uryupinsk", "state" => "Immutable", "zip" => "000000", "countryCode" => ""}, "responseStatus" => {"message" => "OK"})
+          expect(@result).to eq(address: "Earth", city: "Uryupinsk", state: "Immutable", zip: "000000", country_code: "")
         end
 
         it "updates document information" do
@@ -156,7 +156,7 @@ RSpec.describe GatecoinAPI::Client do
             @new_client, = @client.login(**LOGIN)
             @result      = @new_client.document_information
           end
-          expect(@result).to eq("idStatus" => "Present", "proofStatus" => "Present", "responseStatus" => {"message" => "OK"})
+          expect(@result).to eq(id_status: true, address_proof_status: true)
         end
 
         it "fills questionnaire" do

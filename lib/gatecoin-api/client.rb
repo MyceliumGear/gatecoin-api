@@ -78,7 +78,13 @@ module GatecoinAPI
     def personal_information
       response = connection(sign: true).get('/api/Account/PersonalInformation')
 
-      parse_response(response)
+      result = parse_response(response)['personalInfo']
+
+      {
+        given_name: result['givenName'],
+        family_name: result['familyName'],
+        nationality: result['nationality']
+      }
     end
 
     def update_resident_information(address:, city:, state:, zip:, home_phone: nil, mobile_phone: nil, country_code: nil)
@@ -102,7 +108,15 @@ module GatecoinAPI
     def resident_information
       response = connection(sign: true).get('/api/Account/ResidentInformation')
 
-      parse_response(response)
+      result = parse_response(response)['residentInfo']
+
+      {
+        address: result['line1'],
+        city: result['city'],
+        state: result['state'],
+        zip: result['zip'],
+        country_code: result['countryCode']
+      }
     end
 
     def update_document_information(id_number:, id_issuing_country:, id_content:, address_proof_content:, id_mime_type: 'image/jpeg', address_proof_mime_type: 'image/jpeg')
@@ -125,7 +139,12 @@ module GatecoinAPI
     def document_information
       response = connection(sign: true).get('/api/Account/DocumentInformation')
 
-      parse_response(response)
+      result = parse_response(response)
+
+      {
+        id_status: (result['idStatus'] == 'Present'),
+        address_proof_status: (result['proofStatus'] == 'Present')
+      }
     end
 
     def fill_questionnaire(answers)
