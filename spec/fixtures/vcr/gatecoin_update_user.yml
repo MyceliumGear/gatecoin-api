@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.gatecoin.com/api/Auth/Login
+    body:
+      encoding: UTF-8
+      string: '{"UserName":"alerticus+gatecoin.test@gmail.com","Password":"123123123"}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Api-Public-Key:
+      - Bc8X6lIxZdPnYJNfatPpLiX1oDwxNOvt
+      Api-Request-Date:
+      - '1453927803.546'
+      Api-Request-Signature:
+      - oXxWGmsWslmyDliHlmP9X7dYFdVSQTHGThx/41tkn6g=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Wed, 27 Jan 2016 20:50:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc9110349d550f25cc8cbf76485a141461453927802; expires=Thu, 26-Jan-17
+        20:50:02 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS, HEAD
+      Access-Control-Allow-Headers:
+      - Content-Type,API_PUBLIC_KEY,API_REQUEST_SIGNATURE,API_REQUEST_DATE
+      X-Powered-By:
+      - ''
+      - ''
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Ray:
+      - 26b753dd55da3702-ARN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"isSuccess":true,"apiKey":"8A6452061865A7CE4690617509653AEF","publicKey":"kz7oNq4N9qc2WRaxt61ER0X1z3ZfzVIx","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1453927804","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
+    http_version: 
+  recorded_at: Wed, 27 Jan 2016 20:50:04 GMT
+- request:
+    method: put
+    uri: https://staging.gatecoin.com/api/Account/User
+    body:
+      encoding: UTF-8
+      string: '{"GivenName":"GivenName","FamilyName":"FamilyName","Birthday":674784000,"Citiznship":"AX","Line1":"Earth","City":"Uryupinsk","State":"Immutable","ZIP":"000000","CountryCode":"RU","Password":"123123123"}'
+    headers:
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Faraday v0.9.2
+      Api-Public-Key:
+      - kz7oNq4N9qc2WRaxt61ER0X1z3ZfzVIx
+      Api-Request-Date:
+      - '1453927804.246'
+      Api-Request-Signature:
+      - 71G6LwClylfY1r61APNrLNjSY6OMN0nEcN3d1BjOcM8=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - cloudflare-nginx
+      Date:
+      - Wed, 27 Jan 2016 20:50:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '35'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d41afd016ac3c48081208938dc016f7ca1453927803; expires=Thu, 26-Jan-17
+        20:50:03 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      Cache-Control:
+      - private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS, HEAD
+      Access-Control-Allow-Headers:
+      - Content-Type,API_PUBLIC_KEY,API_REQUEST_SIGNATURE,API_REQUEST_DATE
+      X-Powered-By:
+      - ''
+      - ''
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Ray:
+      - 26b753e1b36816b8-ARN
+    body:
+      encoding: UTF-8
+      string: '{"responseStatus":{"message":"OK"}}'
+    http_version: 
+  recorded_at: Wed, 27 Jan 2016 20:50:04 GMT
+recorded_with: VCR 3.0.1

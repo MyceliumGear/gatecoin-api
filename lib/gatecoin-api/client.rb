@@ -22,10 +22,11 @@ module GatecoinAPI
 
     attr_accessor :public_key, :private_key, :url
 
-    def initialize(public_key:, private_key:, url: GatecoinAPI::TEST_URL)
+    def initialize(public_key:, private_key:, url: GatecoinAPI::TEST_URL, password: nil)
       @public_key  = public_key
       @private_key = private_key
       @url         = url
+      @password = password
     end
 
     def register_user(email:, password:, is_corporate_account: false, language: 'en', referral_code: nil)
@@ -41,7 +42,14 @@ module GatecoinAPI
         req.body = MultiJson.dump(params)
       end
 
-      parse_response(response)
+      result = parse_response(response)
+
+      self.class.new(
+        public_key: result['publicKey'],
+        private_key: result['apiKey'],
+        password: password,
+        url: url
+      )
     end
 
     def login(username:, password:, validation_code: nil)
@@ -54,10 +62,57 @@ module GatecoinAPI
       response = connection(sign: true).post('/api/Auth/Login') do |req|
         req.body = MultiJson.dump(params)
       end
-      result   = parse_response(response)
-      client   = self.class.new(public_key: result['publicKey'], private_key: result['apiKey'], url: url)
 
-      [client, result]
+      result = parse_response(response)
+
+      self.class.new(
+        public_key: result['publicKey'],
+        private_key: result['apiKey'],
+        password: password,
+        url: url
+      )
+    end
+
+    def update_user_information(personal_information: {}, resident_information: {})
+      params = {
+        GivenName: personal_information[:given_name],
+        FamilyName: personal_information[:family_name],
+        Birthday: personal_information[:birthday],
+        Citiznship: personal_information[:nationality],
+        Line1: resident_information[:address],
+        City: resident_information[:city],
+        State: resident_information[:state],
+        ZIP: resident_information[:zip],
+        CountryCode: resident_information[:country_code],
+        Password: @password
+      }
+
+      response = connection(sign: true).put('/api/Account/User') do |req|
+        req.body = MultiJson.dump(params)
+      end
+
+      parse_response(response)
+    end
+
+    def user_information
+      response = connection(sign: true).get('/api/Account/User')
+
+      result = parse_response(response)["info"]
+
+      {
+        personal_information: {
+          given_name: result['givenName'],
+          family_name: result['familyName'],
+          nationality: result['citizenship']
+        },
+        resident_information: {
+          address: result['line1'],
+          city: result['city'],
+          state: result['state'],
+          country_code: result['countryCode'],
+          zip: result['zip']
+        }
+      }
     end
 
     def update_personal_information(given_name:, family_name:, birthday:, nationality:)
