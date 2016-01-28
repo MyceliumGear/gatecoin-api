@@ -14,9 +14,9 @@ http_interactions:
       Api-Public-Key:
       - Bc8X6lIxZdPnYJNfatPpLiX1oDwxNOvt
       Api-Request-Date:
-      - '1453927804.971'
+      - '1454005471.388'
       Api-Request-Signature:
-      - wF04q2rvHHKV78dpYaRoQgjiZGqUWxCbeof4maNdQWw=
+      - S4G9EIBhPff5kVkBGrJVQ0BxR1zv0qpjJjQubxMtnak=
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 27 Jan 2016 20:50:04 GMT
+      - Thu, 28 Jan 2016 18:24:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,8 +37,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d33197a26cc8bb022cdc3908271cd7cab1453927803; expires=Thu, 26-Jan-17
-        20:50:03 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      - __cfduid=d80cf02339a60e45b472bc210fcb4e7c61454005472; expires=Fri, 27-Jan-17
+        18:24:32 GMT; path=/; domain=.gatecoin.com; HttpOnly
       Cache-Control:
       - private
       Access-Control-Allow-Origin:
@@ -57,12 +57,12 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Cf-Ray:
-      - 26b753e6797836fc-ARN
+      - 26bebc18408c16d0-ARN
     body:
       encoding: ASCII-8BIT
-      string: '{"isSuccess":true,"apiKey":"2FC6668DE326AA9D614C3ECF9282FC51","publicKey":"WTNNaxS7K85mNfQYpFaiQEItLgZTAYno","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1453927806","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
+      string: '{"isSuccess":true,"apiKey":"2B00B58F79DA6E8ABE7A9EA3B96E6BC5","publicKey":"pEYJbiJHwEENSq04A2y1Z2HcF8TINpUj","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1454005476","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 20:50:05 GMT
+  recorded_at: Thu, 28 Jan 2016 18:24:33 GMT
 - request:
     method: get
     uri: https://staging.gatecoin.com/api/Account/User
@@ -75,11 +75,11 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Api-Public-Key:
-      - WTNNaxS7K85mNfQYpFaiQEItLgZTAYno
+      - pEYJbiJHwEENSq04A2y1Z2HcF8TINpUj
       Api-Request-Date:
-      - '1453927805.712'
+      - '1454005473.19'
       Api-Request-Signature:
-      - DON0supEq5/kKc1cFNpMRVCWHwsdRSB/iP2sOhx51kk=
+      - Yloxz8tGNnPqv24BXKMTkuCWgPbXn5ZFQ5HBhln6QPg=
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -92,7 +92,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 27 Jan 2016 20:50:06 GMT
+      - Thu, 28 Jan 2016 18:24:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -100,8 +100,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d8a7cb368170787ea873a92c7d54bd67c1453927804; expires=Thu, 26-Jan-17
-        20:50:04 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      - __cfduid=dea6f72071b74c0ee75b30b4ad8b491781454005473; expires=Fri, 27-Jan-17
+        18:24:33 GMT; path=/; domain=.gatecoin.com; HttpOnly
       Cache-Control:
       - private
       Access-Control-Allow-Origin:
@@ -120,10 +120,10 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Cf-Ray:
-      - 26b753eb1d5416d6-ARN
+      - 26bebc23606805a3-ARN
     body:
       encoding: ASCII-8BIT
       string: '{"info":{"userId":"IVI871","familyName":"FamilyName","givenName":"GivenName","alias":"GivenName","line1":"Earth","city":"Uryupinsk","state":"Immutable","countryCode":"RU","zip":"000000","citizenship":"AX","idType":0,"idTypeDesc":"---","currentStatus":0,"currentStatusDesc":"---","sourceOfIncome":0,"sourceOfIncomeDesc":"---","natureOfBusiness":0,"natureOfBusinessDesc":"---","totalAnnualIncome":0,"totalAnnualIncomeDesc":"---","liquidNetWorth":0,"liquidNetWorthDesc":"---","totalNetWorth":0,"totalNetWorthDesc":"---"},"responseStatus":{"message":"OK"}}'
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 20:50:07 GMT
+  recorded_at: Thu, 28 Jan 2016 18:24:35 GMT
 recorded_with: VCR 3.0.1

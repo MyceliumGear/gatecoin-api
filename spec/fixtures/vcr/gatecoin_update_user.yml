@@ -14,9 +14,9 @@ http_interactions:
       Api-Public-Key:
       - Bc8X6lIxZdPnYJNfatPpLiX1oDwxNOvt
       Api-Request-Date:
-      - '1453927803.546'
+      - '1454005467.757'
       Api-Request-Signature:
-      - oXxWGmsWslmyDliHlmP9X7dYFdVSQTHGThx/41tkn6g=
+      - WbarV0WF0mzkAGeubUN5uVLGCj8SpODb1XJiSKnh/qs=
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,7 +29,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 27 Jan 2016 20:50:03 GMT
+      - Thu, 28 Jan 2016 18:24:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -37,8 +37,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dc9110349d550f25cc8cbf76485a141461453927802; expires=Thu, 26-Jan-17
-        20:50:02 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      - __cfduid=d2b8eb506e10adac4acbc132e258d123b1454005468; expires=Fri, 27-Jan-17
+        18:24:28 GMT; path=/; domain=.gatecoin.com; HttpOnly
       Cache-Control:
       - private
       Access-Control-Allow-Origin:
@@ -57,12 +57,12 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Cf-Ray:
-      - 26b753dd55da3702-ARN
+      - 26bebc018a3e169a-ARN
     body:
       encoding: ASCII-8BIT
-      string: '{"isSuccess":true,"apiKey":"8A6452061865A7CE4690617509653AEF","publicKey":"kz7oNq4N9qc2WRaxt61ER0X1z3ZfzVIx","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1453927804","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
+      string: '{"isSuccess":true,"apiKey":"5A8FE38D1E6B6639DD90C98CEF2DDF15","publicKey":"6Wl46dITOGgU5DKD2ccIQ3rnkxAs9E9l","alias":"GivenName","defaultCurrency":"BTCUSD","defaultLanguage":"en","verifLevel":3,"userHasUnreadTickets":false,"lastLogonTime":"1454005472","isPendingUnlockSecret":false,"responseStatus":{"message":"OK"}}'
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 20:50:04 GMT
+  recorded_at: Thu, 28 Jan 2016 18:24:29 GMT
 - request:
     method: put
     uri: https://staging.gatecoin.com/api/Account/User
@@ -75,11 +75,11 @@ http_interactions:
       User-Agent:
       - Faraday v0.9.2
       Api-Public-Key:
-      - kz7oNq4N9qc2WRaxt61ER0X1z3ZfzVIx
+      - 6Wl46dITOGgU5DKD2ccIQ3rnkxAs9E9l
       Api-Request-Date:
-      - '1453927804.246'
+      - '1454005469.538'
       Api-Request-Signature:
-      - 71G6LwClylfY1r61APNrLNjSY6OMN0nEcN3d1BjOcM8=
+      - jYj/DvvlPDdJ7L++y/YZqylBvlXwpqV2384NPziGP0Y=
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -92,7 +92,7 @@ http_interactions:
       Server:
       - cloudflare-nginx
       Date:
-      - Wed, 27 Jan 2016 20:50:03 GMT
+      - Thu, 28 Jan 2016 18:24:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -100,8 +100,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d41afd016ac3c48081208938dc016f7ca1453927803; expires=Thu, 26-Jan-17
-        20:50:03 GMT; path=/; domain=.gatecoin.com; HttpOnly
+      - __cfduid=d2ff636f034dfa8d46773395be97dd69e1454005470; expires=Fri, 27-Jan-17
+        18:24:30 GMT; path=/; domain=.gatecoin.com; HttpOnly
       Cache-Control:
       - private
       Access-Control-Allow-Origin:
@@ -120,10 +120,10 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Cf-Ray:
-      - 26b753e1b36816b8-ARN
+      - 26bebc0cef69371a-ARN
     body:
       encoding: UTF-8
       string: '{"responseStatus":{"message":"OK"}}'
     http_version: 
-  recorded_at: Wed, 27 Jan 2016 20:50:04 GMT
+  recorded_at: Thu, 28 Jan 2016 18:24:31 GMT
 recorded_with: VCR 3.0.1

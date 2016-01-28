@@ -98,7 +98,7 @@ RSpec.describe GatecoinAPI::Client do
           {
             given_name:  'GivenName',
             family_name: 'FamilyName',
-            birthday:    Date.parse('1991-05-21').to_time.to_i,
+            birthday:    '1991-05-21',
             nationality: 'AX',
           }
         }
@@ -127,9 +127,9 @@ RSpec.describe GatecoinAPI::Client do
             @new_client = @client.login(**LOGIN)
             @result      = @new_client.user_information
           end
-          returning_user_details = user_details.dup
-          returning_user_details.delete(:birthday)
-          expect(@result).to eq(personal_information: returning_user_details, resident_information: resident_details)
+          user_details_to_return = user_details.dup
+          user_details_to_return.delete(:birthday)
+          expect(@result).to eq(personal_information: user_details_to_return, resident_information: resident_details)
         end
 
         it "updates personal information" do
