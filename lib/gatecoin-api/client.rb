@@ -77,7 +77,6 @@ module GatecoinAPI
       params = {
         GivenName: personal_information[:given_name],
         FamilyName: personal_information[:family_name],
-        Birthday: Date.parse(personal_information[:birthday]).to_time.to_i,
         Citiznship: personal_information[:nationality],
         Line1: resident_information[:address],
         City: resident_information[:city],
@@ -85,7 +84,12 @@ module GatecoinAPI
         ZIP: resident_information[:zip],
         CountryCode: resident_information[:country_code],
         Password: @password
-      }
+      }.select{|_,v| v}
+
+      birthday = personal_information[:birthday]
+      if birthday && (birthday != '')
+        params.merge!(Birthday: Date.parse(birthday).to_time.to_i)
+      end
 
       response = connection(sign: true).put('/api/Account/User') do |req|
         req.body = MultiJson.dump(params)
