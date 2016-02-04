@@ -178,15 +178,21 @@ module GatecoinAPI
       }
     end
 
-    def update_document_information(id_number:, id_issuing_country:, id_content:, address_proof_content:, id_mime_type: 'image/jpeg', address_proof_mime_type: 'image/jpeg')
+    def update_document_information(id_number:, id_issuing_country:, id_content: nil, address_proof_content: nil, id_mime_type: 'image/jpeg', address_proof_mime_type: 'image/jpeg')
       params = {
         IDDocumentNumber: id_number,
-        IDIssuingCountry: id_issuing_country,
-        IDMimeType:       id_mime_type,
-        IDContent:        Base64.strict_encode64(id_content),
-        ProofMimeType:    address_proof_mime_type,
-        ProofContent:     Base64.strict_encode64(address_proof_content),
+        IDIssuingCountry: id_issuing_country
       }
+
+      if id_content
+        params[:IDContent] = Base64.strict_encode64(id_content)
+        params[:IDMimeType] = id_mime_type
+      end
+
+      if address_proof_content
+        params[:ProofContent] = Base64.strict_encode64(address_proof_content)
+        params[:ProofMimeType] = address_proof_mime_type
+      end
 
       response = connection(sign: true).put('/api/Account/DocumentInformation') do |req|
         req.body = MultiJson.dump(params)
