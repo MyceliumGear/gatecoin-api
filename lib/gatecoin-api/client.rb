@@ -16,7 +16,7 @@ module GatecoinAPI
       def initialize(message, code, raw)
         @raw    = raw
         @errors = @raw['errors']
-        super "#{message} [#{code}]"
+        super "#{message} [#{code}] (#{@raw.inspect})"
       end
     end
 
